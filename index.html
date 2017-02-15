@@ -1,0 +1,26 @@
+<center><h1>POLKADOT 2017</h1></center>
+<div id="container">
+	<ul id="polkadotList"></ul>
+</div>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+<script type="text/javascript">
+
+$.getJSON("http://103.43.47.132/polkadot/", function(response) {
+	var groupBy = function(xs, key) {
+	  return xs.reduce(function(rv, x) {
+	    (rv[x[key]] = rv[x[key]] || []).push(x);
+	    return rv;
+	  }, {});
+	};
+
+	var list = groupBy(response, 'namaWilayah');
+	$.each(list, function( keyParent, valueParent ) {
+		$("#polkadotList").append("<li><h2>"+keyParent+"</h2><ul id='"+keyParent.replace(" ","-")+"'></ul></li>");
+		
+		$.each(valueParent, function( keyChild, valueChild ) {
+			$("#"+keyParent.replace(" ","-")+"").append("<li id='"+keyChild+"'><h3>"+(keyChild+1)+". "+valueChild.namaKd+" & "+valueChild.namaWkd+" =  "+valueChild.jumlahSuara+"</h3></li>");
+		});
+	});
+	console.log(groupBy(response, 'namaWilayah'));
+});
+</script>
