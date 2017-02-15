@@ -5,7 +5,7 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 <script type="text/javascript">
 
-$.getJSON("https://pilkada2017.kpu.go.id/api/hasil.json", function(response) {
+$.getJSON("http://103.43.47.132/polkadot/", function(response) {
 	var groupBy = function(xs, key) {
 	  return xs.reduce(function(rv, x) {
 	    (rv[x[key]] = rv[x[key]] || []).push(x);
