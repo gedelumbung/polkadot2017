@@ -15,10 +15,10 @@ $.getJSON("hasil.json", function(response) {
 
 	var list = groupBy(response, 'namaWilayah');
 	$.each(list, function( keyParent, valueParent ) {
-		$("#polkadotList").append("<li><h2>"+keyParent+"</h2><ul id='"+keyParent.replace(" ","-")+"'></ul></li>");
+		$("#polkadotList").append("<li><h2>"+keyParent+"</h2><ul id='"+keyParent.split(' ').join('')+"'></ul></li>");
 		
 		$.each(valueParent, function( keyChild, valueChild ) {
-			$("#"+keyParent.replace(" ","-")+"").append("<li id='"+keyChild+"'><h3>"+(keyChild+1)+". "+valueChild.namaKd+" & "+valueChild.namaWkd+" =  "+valueChild.jumlahSuara+"</h3></li>");
+			$("#"+keyParent.split(' ').join('')+"").append("<li id='"+keyChild+"'><h3>"+(keyChild+1)+". "+valueChild.namaKd+" & "+valueChild.namaWkd+" =  "+valueChild.jumlahSuara+"</h3></li>");
 		});
 	});
 	console.log(groupBy(response, 'namaWilayah'));
